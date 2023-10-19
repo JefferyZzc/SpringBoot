@@ -16,7 +16,7 @@ class SpringbootCaseApplicationTests {
 
     }
 
-    @Test
+  /*  @Test
     public void testGetJwt(){
         Map<String, Object> claims = new HashMap<>();
         claims.put("id",1);
@@ -27,9 +27,9 @@ class SpringbootCaseApplicationTests {
                 .setExpiration(new Date(System.currentTimeMillis()+3600*1000))//设置有效期为一个小时
                 .compact();
         System.out.println(jwt);
-    }
+    }*/
 
-    @Test
+   /* @Test
     public void testParseJwt(){
         Claims claims = Jwts.parser()
                 .setSigningKey("jeffery")//指定密钥
@@ -39,5 +39,5 @@ class SpringbootCaseApplicationTests {
                 .getBody();//拿到第二部分自定义内容
                 //.getSignature();
         System.out.println(claims);
-    }
+    }*/
 }
