@@ -1,31 +1,24 @@
-package com.jeffery.filter;
+package com.jeffery.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jeffery.pojo.Result;
 import com.jeffery.utils.JwtUtils;
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
-
-@Slf4j
-/*@WebFilter(urlPatterns = "/*")*/
-public class LoginFilter implements Filter {
+@Component
+public class LoginCheckInterceptor implements HandlerInterceptor {
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //获取请求url
         String url = request.getRequestURL().toString();
         //判断url是否含有login 若包含则放行
         if(url.contains("login")) {
-            filterChain.doFilter(request, response);
-            return;
+            return true ;
         }
         //获取请求的请求头（token）
         String jwt = request.getHeader("token");
@@ -36,7 +29,7 @@ public class LoginFilter implements Filter {
             String notLogin = JSONObject.toJSONString(error);
             //getwriter获取输出流 write响应字符串给浏览器
             response.getWriter().write(notLogin);
-            return;
+            return false;
         }
         //解析token，若无，返回登录错误
         try {
@@ -48,9 +41,20 @@ public class LoginFilter implements Filter {
             String notLogin = JSONObject.toJSONString(error);
             //getwriter获取输出流 write响应字符串给浏览器
             response.getWriter().write(notLogin);
-            return;
+            return false;
         }
         //放行
-        filterChain.doFilter(request,response);
+        return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        System.out.println("postHandle..");
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        System.out.println("afterComplecation");
+        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }
