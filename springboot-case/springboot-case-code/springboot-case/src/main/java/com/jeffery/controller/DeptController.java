@@ -1,5 +1,6 @@
 package com.jeffery.controller;
 
+import com.jeffery.anno.Log;
 import com.jeffery.pojo.Dept;
 import com.jeffery.pojo.Result;
 import com.jeffery.service.DeptService;
@@ -31,6 +32,7 @@ public class DeptController {
     }
 
     //删除部门
+    @Log
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id){
         log.info("根据id删除部门:{}",id);
@@ -39,6 +41,7 @@ public class DeptController {
     }
 
     //添加部门
+    @Log
     @PostMapping
     public Result add(@RequestBody Dept dept){
         log.info("新增部门{}",dept);
