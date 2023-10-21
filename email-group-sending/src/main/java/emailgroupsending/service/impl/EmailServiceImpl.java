@@ -15,12 +15,23 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
     @Override
-    public void sendEmail(String subject, String text, List<String> recipients) {
+    public void sendEmail(String subject, String text, String[] recipients) {
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("1045288412@qq.com");
         message.setSubject(subject);
         message.setText(text);
-        message.setTo(recipients.toArray(new String[0]));
+        message.setTo(recipients);
 
         javaMailSender.send(message);
     }
+   /* @Override
+    public void sendEmail(String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("1045288412@qq.com");
+        message.setSubject(subject);
+        message.setText(text);
+        message.setTo("1045288412@qq.com");
+
+        javaMailSender.send(message);
+    }*/
 }

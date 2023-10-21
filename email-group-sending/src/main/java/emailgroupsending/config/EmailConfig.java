@@ -15,11 +15,11 @@ public class EmailConfig {
     public JavaMailSender javaMailSender(){
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 
-
-        javaMailSender.setHost("your-smtp-server");
-        javaMailSender.setPort(456);
-        javaMailSender.setUsername("your-smtp-username");
-        javaMailSender.setPassword("your-smtp-password");
+        javaMailSender.setHost("smtp.qq.com");
+        javaMailSender.setPort(587);
+        javaMailSender.setUsername("1045288412@qq.com");
+        javaMailSender.setPassword("kouvdjziunacbbaj");
+        javaMailSender.setProtocol("smtp");
 
         Properties pros = javaMailSender.getJavaMailProperties();
         pros.put("mail.smtp.auth","true");
