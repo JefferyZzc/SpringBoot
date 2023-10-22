@@ -7,7 +7,9 @@ import com.aliyuncs.exceptions.ClientException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import java.io.*;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
 /**
