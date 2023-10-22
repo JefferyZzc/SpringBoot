@@ -24,14 +24,4 @@ public class EmailServiceImpl implements EmailService {
 
         javaMailSender.send(message);
     }
-   /* @Override
-    public void sendEmail(String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("1045288412@qq.com");
-        message.setSubject(subject);
-        message.setText(text);
-        message.setTo("1045288412@qq.com");
-
-        javaMailSender.send(message);
-    }*/
 }
