@@ -10,3 +10,9 @@ sky:
   alioss:
     endpoint: oss-cn-hangzhou.aliyuncs.com
     bucket-name: spring-boot-cangqiong
+
+  redis:
+    host: localhost
+    port: 6379
+    password: Zzc20031202
+    database: 0
