@@ -17,3 +17,7 @@ sky:
     password: Zzc20031202
     database: 0
     #timeout : 5000
+
+  wechat:
+    appid: wx9636b97b98ed9c0e
+    secret: 4c4cf48fbcfe0cd2ea9120ddf19e08d8
