@@ -12,7 +12,8 @@ sky:
     bucket-name: spring-boot-cangqiong
 
   redis:
-    host: localhost
+    host: 127.0.0.1
     port: 6379
     password: Zzc20031202
     database: 0
+    #timeout : 5000
